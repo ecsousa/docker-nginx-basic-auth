@@ -1,5 +1,5 @@
 FROM nginx:alpine
-LABEL maintainer "admin@dhswt.de"
+MAINTAINER Eduardo Sousa <ecsousa@gmail.com>
 
 ENV LISTEN_PORT=80 \
 	AUTH_REALM="Restricted" \
@@ -12,7 +12,8 @@ ENV LISTEN_PORT=80 \
 RUN apk add --no-cache gettext \
 &&	rm /etc/nginx/conf.d/default.conf
 
-ADD auth.conf auth.htpasswd /etc/nginx/conf.d/
+ADD auth-template.conf /etc/nginx/
+ADD auth.htpasswd /etc/nginx/conf.d/
 ADD start.sh /
 
 CMD ["/start.sh"]

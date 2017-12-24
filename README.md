@@ -1,3 +1,5 @@
+_**Note:** Based upon https://github.com/davidhiendl/docker-nginx-basic-auth_
+
 # NGINX Basic Auth Proxy Container
 NGINX container pre-configured to act as a basic auth proxy.
 Simple way to protect HTTP services that don't have any authentication when OAuth or anything similar is to much.
@@ -7,13 +9,12 @@ Supports the following environment variables for configuration (with defaults):
 
 | Variable | Default | Description |
 | --- | --- | --- |
-| LISTEN_PORT | 80 | The port to bind to |
-| AUTH_REALM | "Restricted" | The identification that will be provided via basic auth |
-| HTPASSWD_FILE | "/etc/nginx/conf.d/auth.htpasswd" | Can be mounted into the container via Swarm Secret, Kubernetes Secret oder plain mount --bind |
-| HTPASSWD | `null` | inline htpasswd file entry, appended to configuration file specified by HTPASSWD_FILE |
-| FORWARD_PROTOCOL | "http" |  |
-| FORWARD_PORT | 8080 |  |
-| FORWARD_HOST | "example.localhost" |  |
+| LISTEN\_PORT | 80 | The port to bind to |
+| AUTH\_REALM | "Restricted" | The identification that will be provided via basic auth |
+| HTPASSWD\_FILE | "/etc/nginx/conf.d/auth.htpasswd" | Can be mounted into the container via Swarm Secret, Kubernetes Secret oder plain mount --bind |
+| FORWARD\_PROTOCOL | "http" |  |
+| FORWARD\_PORT | 8080 |  |
+| FORWARD\_HOST | "example.localhost" |  |
 
 ## Sample Configuration
 Given the following configuration:
@@ -22,7 +23,6 @@ Given the following configuration:
 LISTEN_PORT=8080
 AUTH_REALM=Restricted
 HTPASSWD_FILE=/etc/nginx/conf.d/auth.htpasswd
-HTPASSWD=someuser:$some/hash.
 FORWARD_PROTOCOL=http
 FORWARD_PORT=80
 FORWARD_HOST=localhost
